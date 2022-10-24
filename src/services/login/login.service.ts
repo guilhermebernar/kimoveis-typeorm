@@ -4,6 +4,7 @@ import { IUserLogin } from "../../interfaces/users";
 import {compare} from "bcrypt";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
+import { appError } from "../../errors/appError";
 
 const createLoginService = async({email, password}:IUserLogin): Promise<string> =>{
     const userRepository = AppDataSource.getRepository(User)
@@ -13,13 +14,13 @@ const createLoginService = async({email, password}:IUserLogin): Promise<string> 
     })
 
     if(!user){
-        throw new Error("Invalid password.")
+        throw new appError("Invalid password.", 403)
     }
 
     const passwordMatch = await compare(password, user.password)
 
     if(!passwordMatch){
-        throw new Error("Invalid password.")
+        throw new appError("Invalid password.",403)
     }
 
     const token = jwt.sign({

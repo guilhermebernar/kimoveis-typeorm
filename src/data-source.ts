@@ -25,10 +25,10 @@ const AppDataSource = new DataSource(
     }
 )
 
-AppDataSource.initialize().then(() => {
-    console.log(`Database connected on port ${databasePort}`)
-}).catch((error) => {
-    console.log(error)
-});
+// AppDataSource.initialize().then(() => {
+//     console.log(`Database connected on port ${databasePort}`)
+// }).catch((error) => {
+//     console.log(error)
+// });
 
 export default AppDataSource
