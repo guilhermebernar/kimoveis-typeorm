@@ -20,6 +20,9 @@ class User {
     @Column({default: false})
     isAdm: boolean;
 
+    @Column({default: true})
+    isActive: boolean;
+
     @CreateDateColumn()
     createdAt: Date;
 
