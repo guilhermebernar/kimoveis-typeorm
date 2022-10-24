@@ -5,12 +5,15 @@ import { appError } from "../../errors/appError"
 
 const deleteUserService = async(id: string): Promise<void> =>{
     const userRepository = AppDataSource.getRepository(User)
-
-    const user = await userRepository.findOneBy({id}) 
+    const user = await userRepository.findOneBy({id: id})
 
     if(!user){
         throw new appError('User not found', 404)
     }
+
+    if (user.isActive === false) {
+        throw new appError('User not found')
+      }
 
     await userRepository.update(
         id,

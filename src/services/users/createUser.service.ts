@@ -10,7 +10,7 @@ const createUserService = async ({email,name,password,isAdm}:IUserRequest): Prom
     if(!password){
         throw new appError('Password is missing')
     }
-
+    
     const findUser = await userRepository.findOneBy({email})
     if(findUser!=null||findUser!=undefined){
         throw new appError('User already exists')

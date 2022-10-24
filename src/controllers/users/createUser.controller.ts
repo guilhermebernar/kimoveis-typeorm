@@ -6,7 +6,7 @@ import { instanceToPlain } from 'class-transformer';
 const createUserController = async (req:Request, res:Response) => {
     const user: IUserRequest = req.body;
     const createdUser = await createUserService(user);
-    return res.json(instanceToPlain(createdUser));
+    return res.status(201).json(instanceToPlain(createdUser));
 };
 
 export default createUserController;
