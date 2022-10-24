@@ -28,6 +28,8 @@ const ensureAuthMiddleware = async(req:Request, res:Response, next:NextFunction)
             id: decoded.sub
             };
 
+            return next();
+
         }
     )
 
