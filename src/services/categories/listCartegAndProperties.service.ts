@@ -19,7 +19,7 @@ const listCategoriesAndPropertiesService = async (idCateg: string) => {
     }
 
     const searchProp = properties.filter(
-        (p)=>p.categories?.id === idCateg
+        (p)=>p.category?.id === idCateg
         )
 
     return{

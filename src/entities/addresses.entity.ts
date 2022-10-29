@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity('addreses')
+@Entity('address')
 class Address{
 
     @PrimaryGeneratedColumn('uuid')
@@ -10,7 +10,7 @@ class Address{
     district: string;
 
     @Column()
-    zipcode: string;
+    zipCode: string;
 
     @Column()
     number: string;

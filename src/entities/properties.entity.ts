@@ -12,12 +12,7 @@ class Properties{
     @Column({default: false})
     sold: boolean
 
-    @Column({
-        type: "decimal", 
-        precision: 12, 
-        scale: 2, 
-        default: 0
-    })
+    @Column({type: "decimal", precision: 12, scale: 2, default: 0})
     value: number
 
     @Column({type: "integer"})
@@ -31,10 +26,10 @@ class Properties{
 
     @OneToOne((type) => Address, {eager: true})
     @JoinColumn()
-    adresses: Address
+    address: Address
 
-    @ManyToOne((type) => Categories, {eager: true})
-    categories: Categories
+    @ManyToOne(() => Categories, {eager: true})
+    category: Categories
 
     @OneToMany((type) => Schedules, (schedule) => schedule.property)
     schedules: Schedules[]

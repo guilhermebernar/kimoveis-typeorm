@@ -14,8 +14,9 @@ const updateUserService = async(userData:any, id: string): Promise<User> =>{
     
     const userRepository = AppDataSource.getRepository(User)
 
-    const findUser = await userRepository.findOneBy({id})
-    if(!findUser){
+    const searchUser = await userRepository.findOneBy({id})
+    
+    if(!searchUser){
         throw new appError("User not found.", 404)
     }
 
@@ -24,9 +25,9 @@ const updateUserService = async(userData:any, id: string): Promise<User> =>{
     await userRepository.update(
         id,
         {
-        name: name ? name: findUser.name,
-        email: email ? email: findUser.email,
-        password: password ? await hash(password, 10 ): findUser.password
+        name: name ? name: searchUser.name,
+        email: email ? email: searchUser.email,
+        password: password ? await hash(password, 10 ): searchUser.password
         }
     )
 

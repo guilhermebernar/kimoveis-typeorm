@@ -10,8 +10,8 @@ class Categories{
 
     @Column()
     name: string;
-
-    @OneToMany(()=>Properties, (property) => property.categories)
+    
+    @OneToMany(() => Properties, (property) => property.category)
     properties: Properties[]
 
 }
