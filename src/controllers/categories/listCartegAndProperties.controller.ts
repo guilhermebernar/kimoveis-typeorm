@@ -5,9 +5,10 @@ import { listCategoriesAndPropertiesService } from '../../services/categories/li
 const listCategoriesAndPropertiesController = async (req: Request, res: Response)=>{
 
     const idCateg = req.params.id;
+
     const categories = await listCategoriesAndPropertiesService(idCateg);
 
-    return res.send(categories);
+    return res.status(200).json(categories);
 
 }
 

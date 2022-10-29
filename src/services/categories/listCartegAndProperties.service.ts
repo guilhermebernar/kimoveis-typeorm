@@ -5,18 +5,17 @@ import { appError } from "../../errors/appError";
 
 
 const listCategoriesAndPropertiesService = async (idCateg: string) => {
-
+    
     const categoryRepository = AppDataSource.getRepository(Categories)
     const propertiesRepository = AppDataSource.getRepository(Properties)
     const searchCategory = await categoryRepository.findOneBy({
         id:idCateg
     })
+    
     const properties = await propertiesRepository.find()
 
-
-    if(!searchCategory){
-        throw new appError("This category does not existfound", 404)
-    }
+    if(!searchCategory)
+    {throw new appError("This category does not existfound", 404)}
 
     const searchProp = properties.filter(
         (p)=>p.category?.id === idCateg

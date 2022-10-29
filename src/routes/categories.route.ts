@@ -11,6 +11,6 @@ const routerCategories = Router();
 
 routerCategories.post('',ensureAuthMiddleware, ensureAdmPostMiddleware, createCategoriesController)
 routerCategories.get('', listCategoriesController)
-routerCategories.get("/:id/propreties", listCategoriesAndPropertiesController)
+routerCategories.get("/:id/properties", listCategoriesAndPropertiesController)
 
 export default routerCategories
